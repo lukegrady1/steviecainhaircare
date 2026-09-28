@@ -1,0 +1,28 @@
+{
+  "_comment": "Service slug -> GoHighLevel calendar ID in the Stevie Cain Hair Care sub-account (location xIfkb7Kg1NAczAtcfybd). Calendars live in group 1lWrH7rBiTdUtMO3Fh7G (widget slug stevie-cain-hair-care). Read from the public group widget on 2026-09-27; scripts/ghl-setup.mjs can rewrite this if calendars are recreated.",
+  "locationId": "xIfkb7Kg1NAczAtcfybd",
+  "groupId": "1lWrH7rBiTdUtMO3Fh7G",
+  "groupSlug": "stevie-cain-hair-care",
+  "calendars": {
+    "short-haircut": "STfu1NAwqW2wv1AWDGQR",
+    "long-haircut": "DTcztEJSrODqdMmHjOBO",
+    "bald-fade": "gSclcSfMWzjpKiNnbUHZ",
+    "buzz-cut": "PDU5TcJhth04m65tce0r",
+    "kids-haircut": "sEVXzgRhwOgkSjTrZKVx",
+    "beard-trim": "6O0YtRS8Kaj4rwHkifoi",
+    "bang-trim": "48z4hyUnaqLTEH29obva",
+    "neck-clean-up": "TfitjdYWaFOx80veZf0d",
+    "designs": "6Onw4SfEKt4OrgKM0Jz3",
+    "blow-out": "j6aAyRWikHJjUmp5XsRh",
+    "hot-tool-styling": "zga8l71TBNdLkLBEFkKQ",
+    "up-dos": "N1hNIk5X4dux1M5rvDkG",
+    "gray-blending": "wac1T3DFnvsCZdDQXyyR",
+    "color-consultation": "SHrPB1Ul3EbNKgcoxHyt",
+    "color-application": "U3nuBYKr3G8iYZI1gp8I",
+    "wax-eyebrow": "TnrBs9jdDHooGiZCNy6j",
+    "wax-nose": "ZufrThngagBwBRzldyEq",
+    "wax-ears": "POnZn33HALvoSVe8GbKA",
+    "wax-double": "v0mghgQs3KkcUfMVPkzI",
+    "wax-triple": "HcH9hk4hYDJPlD6Qcer9"
+  }
+}

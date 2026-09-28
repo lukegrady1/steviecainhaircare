@@ -1,0 +1,12 @@
+# Netlify build config.
+#
+# `publish` must be set explicitly. Netlify auto-detects Next.js and would
+# otherwise enable its Next.js Runtime and publish `.next/`, which assumes a
+# server. This app is `output: "export"` (see next.config.ts): a fully static
+# build written to `out/`.
+[build]
+  command = "npm run build"
+  publish = "out"
+
+[build.environment]
+  NODE_VERSION = "20"
