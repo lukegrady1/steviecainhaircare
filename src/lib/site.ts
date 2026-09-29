@@ -278,7 +278,7 @@ export const photos: {
 /*
   Gallery. Real client photos from Stevie's Drive folder (Old Photos), sized
   to 1200px in public/images/gallery. Alt text describes the cut, never the
-  client. The first four are what the home page shows.
+  client. The home page slides through all of them; the gallery page grids them.
 */
 export const gallery: { src: string | null; alt: string }[] = [
   { src: "/images/gallery/01-balayage-curls.jpg", alt: "Brunette balayage with soft curls" },
@@ -293,4 +293,16 @@ export const gallery: { src: string | null; alt: string }[] = [
   { src: "/images/gallery/10-updo.jpg", alt: "Twisted up-do" },
   { src: "/images/gallery/11-shag-bob.jpg", alt: "Dark shag bob with bangs" },
   { src: "/images/gallery/12-layered-blowout.jpg", alt: "Layered blowout with volume" },
+  { src: "/images/gallery/13-mid-skin-fade.jpg", alt: "Mid skin fade with a textured crop" },
+  { src: "/images/gallery/14-mullet-fade.jpg", alt: "Long mullet with a skin fade" },
+  { src: "/images/gallery/15-curly-mullet.jpg", alt: "Curly mullet with a soft taper" },
+  { src: "/images/gallery/16-beard-shape-up.jpg", alt: "Beard shape-up with a tight taper" },
+  { src: "/images/gallery/17-undercut-nape-design.jpg", alt: "Undercut with a V-shaped nape design" },
+  { src: "/images/gallery/18-blonde-textured-crop.jpg", alt: "Blonde textured crop" },
+  { src: "/images/gallery/19-highlighted-bob.jpg", alt: "Highlighted chin-length bob" },
+  { src: "/images/gallery/20-curtain-bangs-shag.jpg", alt: "Shag with curtain bangs" },
+  { src: "/images/gallery/21-natural-curls.jpg", alt: "Layered cut on natural curls" },
+  { src: "/images/gallery/22-blonde-layered-lob.jpg", alt: "Blonde layered lob" },
+  { src: "/images/gallery/23-classic-taper.jpg", alt: "Classic taper with a side part" },
+  { src: "/images/gallery/24-teen-taper.jpg", alt: "Short taper with a textured top" },
 ];

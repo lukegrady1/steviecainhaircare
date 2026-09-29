@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Fraunces, DM_Sans } from "next/font/google";
+import { Manrope } from "next/font/google";
 import "./globals.css";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
@@ -7,20 +7,12 @@ import { JsonLd } from "@/components/JsonLd";
 import { site, siteUrl } from "@/lib/site";
 
 /*
-  Fraunces: a warm "soft serif" with a wink, which is what "Good Hair for All
-  Y'all" needs from a display face. Optical size tightens the big hero
-  headline; SOFT rounds the terminals a touch at large sizes.
+  Manrope everywhere: one geometric sans for headings, body, prices, and
+  hours. The variable font covers weights 200–800 in a single file, so the
+  display and body tokens in globals.css both point at it.
 */
-const display = Fraunces({
-  variable: "--font-display",
-  subsets: ["latin"],
-  display: "swap",
-  axes: ["opsz", "SOFT"],
-  style: ["normal", "italic"],
-});
-
-const body = DM_Sans({
-  variable: "--font-body",
+const sans = Manrope({
+  variable: "--font-sans",
   subsets: ["latin"],
   display: "swap",
 });
@@ -55,7 +47,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${display.variable} ${body.variable}`}>
+    <html lang="en" className={sans.variable}>
       <body className="min-h-dvh">
         <JsonLd />
         <Header />

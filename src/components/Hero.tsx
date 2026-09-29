@@ -11,16 +11,14 @@ export function Hero() {
           <RatingBadge />
           {/*
             SEO: the h1 carries what people search for (services + city) and
-            mirrors the title tag. The tagline stays visible above it as the
-            brand voice, but as a paragraph so it does not dilute the heading.
+            mirrors the title tag.
           */}
-          <p className="t-headline mt-6 text-2xl italic text-ink sm:text-3xl">{site.tagline}</p>
-          <h1 className="t-display mt-3 text-[2.6rem] text-ink sm:text-5xl lg:text-[4.25rem]">
+          <h1 className="t-display mt-6 text-[2.6rem] text-ink sm:text-5xl lg:text-[4.25rem]">
             Haircuts, Color &amp; Styling in Oklahoma City
           </h1>
           <p className="mt-5 max-w-lg text-lg leading-relaxed text-muted sm:text-xl">
             Personalized cuts, fades, beards, color, and facial waxing with {site.owner}, a solo
-            stylist inside Salons by JC. She listens first, then cuts for your hair and your life.
+            stylist inside Salons by JC.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
             <BookButton className="btn btn-primary w-full sm:w-auto sm:min-w-[15rem]">

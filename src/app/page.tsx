@@ -12,7 +12,7 @@ export default function Home() {
       <About compact />
       <Services compact />
       <Reviews />
-      <Gallery limit={4} />
+      <Gallery compact />
       <VisitUs compact />
     </>
   );

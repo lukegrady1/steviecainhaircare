@@ -2,9 +2,9 @@ import { ImageResponse } from "next/og";
 import { site } from "@/lib/site";
 
 /*
-  Open Graph card, rendered at build time (static export). Fraunces (upright 600 only, so the
-  headline is not set in the italic face) is fetched from Google Fonts at build; if that fetch fails the card still
-  renders with the default sans so a font outage can never break a deploy.
+  Open Graph card, rendered at build time (static export). Manrope 600 is fetched from
+  Google Fonts at build; if that fetch fails the card still renders with the default sans
+  so a font outage can never break a deploy.
 */
 export const dynamic = "force-static";
 
@@ -12,10 +12,10 @@ export const alt = "Stevie Cain Haircare — Good Hair for All Y’all!";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-async function loadFraunces(): Promise<ArrayBuffer | null> {
+async function loadManrope(): Promise<ArrayBuffer | null> {
   try {
     const css = await fetch(
-      "https://fonts.googleapis.com/css2?family=Fraunces:wght@600&display=swap",
+      "https://fonts.googleapis.com/css2?family=Manrope:wght@600&display=swap",
       { headers: { "User-Agent": "Mozilla/5.0" } },
     ).then((r) => r.text());
     const url = css.match(/src: url\((https:[^)]+\.(?:ttf|woff))\)/)?.[1];
@@ -27,8 +27,8 @@ async function loadFraunces(): Promise<ArrayBuffer | null> {
 }
 
 export default async function Image() {
-  const fraunces = await loadFraunces();
-  const display = fraunces ? "Fraunces" : "serif";
+  const manrope = await loadManrope();
+  const display = manrope ? "Manrope" : "sans-serif";
 
   return new ImageResponse(
     (
@@ -53,7 +53,7 @@ export default async function Image() {
           <div style={{ fontSize: 96, fontWeight: 600, lineHeight: 1.02, letterSpacing: -2 }}>
             Good Hair for
           </div>
-          <div style={{ fontSize: 96, fontWeight: 600, lineHeight: 1.02, letterSpacing: -2, fontStyle: "italic" }}>
+          <div style={{ fontSize: 96, fontWeight: 600, lineHeight: 1.02, letterSpacing: -2 }}>
             All Y’all!
           </div>
         </div>
@@ -75,8 +75,8 @@ export default async function Image() {
     ),
     {
       ...size,
-      fonts: fraunces
-        ? [{ name: "Fraunces", data: fraunces, weight: 600, style: "normal" }]
+      fonts: manrope
+        ? [{ name: "Manrope", data: manrope, weight: 600, style: "normal" }]
         : [],
     },
   );

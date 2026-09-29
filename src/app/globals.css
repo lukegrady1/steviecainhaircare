@@ -6,8 +6,8 @@
   Client brief: sage green and a soft beige, black for type, minimal.
   Beige is the ground, sage does every job an accent would (buttons, eyebrow
   labels, the highlighted row), black carries all the text. No third color.
-  Fraunces for headings keeps a little warmth without decoration; DM Sans
-  keeps prices, hours, and form text crisp on a phone.
+  Manrope for everything: headings carry weight and tight tracking, body
+  text keeps prices, hours, and form text crisp on a phone.
 */
 
 @theme {
@@ -26,8 +26,8 @@
   --color-ink: #1a1a1a;
   --color-muted: #595955;
 
-  --font-display: var(--font-display), "Fraunces", Georgia, serif;
-  --font-body: var(--font-body), "DM Sans", system-ui, sans-serif;
+  --font-display: var(--font-sans), "Manrope", system-ui, sans-serif;
+  --font-body: var(--font-sans), "Manrope", system-ui, sans-serif;
 
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
 
@@ -66,14 +66,12 @@ body {
     font-weight: 600;
     letter-spacing: -0.02em;
     line-height: 1.02;
-    font-variation-settings: "opsz" 144, "SOFT" 0;
   }
   .t-headline {
     font-family: var(--font-display);
     font-weight: 600;
     letter-spacing: -0.015em;
     line-height: 1.1;
-    font-variation-settings: "opsz" 72, "SOFT" 0;
   }
   .t-eyebrow {
     font-size: 0.75rem;
@@ -150,6 +148,38 @@ body {
   .focus-ring:focus-visible {
     outline: 3px solid var(--color-sage);
     outline-offset: 3px;
+  }
+
+  /* Round arrow over each edge of the home gallery strip. */
+  .slider-arrow {
+    position: absolute;
+    top: 50%;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 9999px;
+    background: rgb(250 248 243 / 0.92);
+    color: var(--color-ink);
+    box-shadow: var(--shadow-lift), inset 0 0 0 1px var(--color-line);
+    transform: translateY(-50%);
+    transition:
+      background-color 200ms var(--ease-out),
+      color 200ms var(--ease-out);
+  }
+  .slider-arrow:hover {
+    background: var(--color-ink);
+    color: var(--color-beige);
+  }
+
+  /* Horizontal strips scroll by swipe or arrows; the bar itself is noise. */
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
   }
 
   /* Diagonal hatch for image placeholders, so empty slots still look designed. */
