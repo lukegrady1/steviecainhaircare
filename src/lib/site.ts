@@ -261,17 +261,17 @@ export const photos: {
   suite: { src: string; alt: string }[];
 } = {
   /* Hero: the client chair in Stevie's suite. */
-  studio: { src: "/images/studio/chair.jpg", alt: "The client chair in Stevie’s suite at Salons by JC" },
+  studio: { src: "/images/studio/chair.webp", alt: "The client chair in Stevie’s suite at Salons by JC" },
   /*
     About page slot. The client folder has no portrait of Stevie yet, so this
     is a wide shot of the suite; swap for a headshot when one arrives.
   */
-  portrait: { src: "/images/studio/suite.jpg", alt: "Stevie’s suite: lit mirror, olive tool cabinet, and barber chair" },
+  portrait: { src: "/images/studio/suite.webp", alt: "Stevie’s suite: lit mirror, olive tool cabinet, and barber chair" },
   /* Visit page strip. */
   suite: [
-    { src: "/images/studio/barber-chair.jpg", alt: "Vintage barber chair and shampoo bowl" },
-    { src: "/images/studio/products.jpg", alt: "Product shelf with Verb and American Crew" },
-    { src: "/images/studio/mirror.jpg", alt: "Lit mirror and styling station" },
+    { src: "/images/studio/barber-chair.webp", alt: "Vintage barber chair and shampoo bowl" },
+    { src: "/images/studio/products.webp", alt: "Product shelf with Verb and American Crew" },
+    { src: "/images/studio/mirror.webp", alt: "Lit mirror and styling station" },
   ],
 };
 
@@ -281,28 +281,28 @@ export const photos: {
   client. The home page slides through all of them; the gallery page grids them.
 */
 export const gallery: { src: string | null; alt: string }[] = [
-  { src: "/images/gallery/01-balayage-curls.jpg", alt: "Brunette balayage with soft curls" },
-  { src: "/images/gallery/02-skin-fade.jpg", alt: "Skin fade with a textured top" },
-  { src: "/images/gallery/03-color-bob.jpg", alt: "Copper bob with pink money piece" },
-  { src: "/images/gallery/04-clipper-design.jpg", alt: "Clipper design on a short cut" },
-  { src: "/images/gallery/05-long-blonde-balayage.jpg", alt: "Long blonde balayage with layers" },
-  { src: "/images/gallery/06-platinum-undercut.jpg", alt: "Platinum blonde undercut" },
-  { src: "/images/gallery/07-beard-fade.jpg", alt: "Beard trim with a tapered fade" },
-  { src: "/images/gallery/08-silver-curls.jpg", alt: "Silver blonde curls" },
-  { src: "/images/gallery/09-braided-half-up.jpg", alt: "Braided half-up special occasion style" },
-  { src: "/images/gallery/10-updo.jpg", alt: "Twisted up-do" },
-  { src: "/images/gallery/11-shag-bob.jpg", alt: "Dark shag bob with bangs" },
-  { src: "/images/gallery/12-layered-blowout.jpg", alt: "Layered blowout with volume" },
-  { src: "/images/gallery/13-mid-skin-fade.jpg", alt: "Mid skin fade with a textured crop" },
-  { src: "/images/gallery/14-mullet-fade.jpg", alt: "Long mullet with a skin fade" },
-  { src: "/images/gallery/15-curly-mullet.jpg", alt: "Curly mullet with a soft taper" },
-  { src: "/images/gallery/16-beard-shape-up.jpg", alt: "Beard shape-up with a tight taper" },
-  { src: "/images/gallery/17-undercut-nape-design.jpg", alt: "Undercut with a V-shaped nape design" },
-  { src: "/images/gallery/18-blonde-textured-crop.jpg", alt: "Blonde textured crop" },
-  { src: "/images/gallery/19-highlighted-bob.jpg", alt: "Highlighted chin-length bob" },
-  { src: "/images/gallery/20-curtain-bangs-shag.jpg", alt: "Shag with curtain bangs" },
-  { src: "/images/gallery/21-natural-curls.jpg", alt: "Layered cut on natural curls" },
-  { src: "/images/gallery/22-blonde-layered-lob.jpg", alt: "Blonde layered lob" },
-  { src: "/images/gallery/23-classic-taper.jpg", alt: "Classic taper with a side part" },
-  { src: "/images/gallery/24-teen-taper.jpg", alt: "Short taper with a textured top" },
+  { src: "/images/gallery/01-balayage-curls.webp", alt: "Brunette balayage with soft curls" },
+  { src: "/images/gallery/02-skin-fade.webp", alt: "Skin fade with a textured top" },
+  { src: "/images/gallery/03-color-bob.webp", alt: "Copper bob with pink money piece" },
+  { src: "/images/gallery/04-clipper-design.webp", alt: "Clipper design on a short cut" },
+  { src: "/images/gallery/05-long-blonde-balayage.webp", alt: "Long blonde balayage with layers" },
+  { src: "/images/gallery/06-platinum-undercut.webp", alt: "Platinum blonde undercut" },
+  { src: "/images/gallery/07-beard-fade.webp", alt: "Beard trim with a tapered fade" },
+  { src: "/images/gallery/08-silver-curls.webp", alt: "Silver blonde curls" },
+  { src: "/images/gallery/09-braided-half-up.webp", alt: "Braided half-up special occasion style" },
+  { src: "/images/gallery/10-updo.webp", alt: "Twisted up-do" },
+  { src: "/images/gallery/11-shag-bob.webp", alt: "Dark shag bob with bangs" },
+  { src: "/images/gallery/12-layered-blowout.webp", alt: "Layered blowout with volume" },
+  { src: "/images/gallery/13-mid-skin-fade.webp", alt: "Mid skin fade with a textured crop" },
+  { src: "/images/gallery/14-mullet-fade.webp", alt: "Long mullet with a skin fade" },
+  { src: "/images/gallery/15-curly-mullet.webp", alt: "Curly mullet with a soft taper" },
+  { src: "/images/gallery/16-beard-shape-up.webp", alt: "Beard shape-up with a tight taper" },
+  { src: "/images/gallery/17-undercut-nape-design.webp", alt: "Undercut with a V-shaped nape design" },
+  { src: "/images/gallery/18-blonde-textured-crop.webp", alt: "Blonde textured crop" },
+  { src: "/images/gallery/19-highlighted-bob.webp", alt: "Highlighted chin-length bob" },
+  { src: "/images/gallery/20-curtain-bangs-shag.webp", alt: "Shag with curtain bangs" },
+  { src: "/images/gallery/21-natural-curls.webp", alt: "Layered cut on natural curls" },
+  { src: "/images/gallery/22-blonde-layered-lob.webp", alt: "Blonde layered lob" },
+  { src: "/images/gallery/23-classic-taper.webp", alt: "Classic taper with a side part" },
+  { src: "/images/gallery/24-teen-taper.webp", alt: "Short taper with a textured top" },
 ];

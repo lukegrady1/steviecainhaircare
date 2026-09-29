@@ -6,7 +6,7 @@ import { MobileMenu } from "./MobileMenu";
 import { NavLinks } from "./NavLinks";
 import { site } from "@/lib/site";
 
-/* Intrinsic size of public/images/logo.png; the class sets the rendered height. */
+/* Intrinsic size of public/images/logo.webp; the class sets the rendered height. */
 const LOGO = { w: 640, h: 575 };
 
 /*
@@ -26,7 +26,7 @@ export function Header() {
             into the beige header.
           */}
           <Image
-            src="/images/logo.png"
+            src="/images/logo.webp"
             alt="Stevie Cain Haircare"
             width={LOGO.w}
             height={LOGO.h}

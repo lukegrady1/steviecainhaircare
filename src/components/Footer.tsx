@@ -10,7 +10,7 @@ export function Footer() {
         <div>
           <div className="inline-flex rounded-3xl bg-beige p-4">
             <Image
-              src="/images/logo.png"
+              src="/images/logo.webp"
               alt="Stevie Cain Haircare"
               width={640}
               height={575}
