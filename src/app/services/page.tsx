@@ -6,7 +6,7 @@ import { Services } from "@/components/Services";
 export const metadata: Metadata = {
   title: "Services & Pricing",
   description:
-    "Haircut, fade, beard, styling, color, and facial waxing prices at Stevie Cain Haircare in Oklahoma City. Short haircuts from $45, long haircuts $60, color $75.",
+    "Haircut, fade, beard, styling, color, and facial waxing prices at Stevie Cain Haircare in Oklahoma City. Short haircuts from $45, long haircuts $60, color $75 per hour after a free consultation.",
 };
 
 export default function ServicesPage() {

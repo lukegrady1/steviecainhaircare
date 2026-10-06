@@ -39,7 +39,7 @@ It creates the **Stevie Cain Haircare** calendar group and 20 service calendars 
 | Bald Fade | 45 min | from $55 |
 | Buzz Cut | 20 min | $25 |
 | Kid's Haircut (10 & under) | 30 min | $30 |
-| Beard Trim | 15 min | $20 |
+| Beard Trim | 30 min | $20 |
 | Bang Trim | 15 min | from $15 |
 | Neck Clean Up | 10 min | $15 |
 | Designs | 15 min | $15 |
@@ -48,12 +48,12 @@ It creates the **Stevie Cain Haircare** calendar group and 20 service calendars 
 | Special Occasions / Up-Dos | 75 min | from $60 |
 | Camouflage Gray Blending | 30 min | $35 |
 | Color Consultation | 15 min | Free |
-| Hair Color Application | 120 min | $75 |
-| Eyebrow Wax | 10 min | from $12 |
-| Nose Wax | 10 min | from $12 |
-| Ears Wax | 10 min | from $12 |
-| Double Wax | 15 min | from $20 |
-| Triple Wax | 20 min | from $40 |
+| Hair Color Application | 120 min | $75 per hour |
+| Eyebrow Wax | 15 min | $12 |
+| Nose Wax | 15 min | $12 |
+| Ears Wax | 15 min | $12 |
+| Double Wax | 20 min | $20 |
+| Triple Wax | 30 min | $30 |
 
 Every calendar gets: availability Sun 11–4, Wed–Fri 10–6, Sat 10–4 (closed Mon/Tue); 15-minute slot interval; 2-hour minimum notice; bookable 2 months out; auto-confirm; reschedule and cancel allowed; and these notifications:
 

@@ -120,10 +120,11 @@ export const visit = {
 /* ------------------------------------------------------------------------
    SERVICES
    ------------------------------------------------------------------------
-   Names, prices, and descriptions are verbatim from the brief. `minutes` match the
-   live GoHighLevel calendars (synced 2026-09-27);
-   they drive both the GHL calendar setup and the "45 min" chip on each card.
-   `from: true` renders "from $45" rather than "$45".
+   Names, prices, and descriptions are verbatim from the brief, with Stevie's
+   2026-10-05 revisions to waxing, beard trim, and color. `minutes` drive both
+   the GHL calendar setup and the "45 min" chip on each card.
+   `from: true` renders "from $45" rather than "$45"; `per: "hour"` renders
+   "$75/hr".
    ------------------------------------------------------------------------ */
 
 export type Service = {
@@ -131,6 +132,8 @@ export type Service = {
   name: string;
   price: number;
   from?: boolean;
+  /* Hourly services: the price is a rate, not a flat fee. */
+  per?: "hour";
   minutes: number;
   description?: string;
 };
@@ -151,7 +154,7 @@ export const serviceGroups: ServiceGroup[] = [
     services: [
       { slug: "short-haircut", name: "Short Haircut", price: 45, from: true, minutes: 45, description: "Tailored cut for chin-length and shorter styles; includes wash and styling." },
       { slug: "long-haircut", name: "Long Haircut", price: 60, minutes: 60, description: "Tailored cut for chin-length or longer hair; includes wash and dry." },
-      { slug: "beard-trim", name: "Beard Trim", price: 20, minutes: 15, description: "Tailored beard grooming with precision lining." },
+      { slug: "beard-trim", name: "Beard Trim", price: 20, minutes: 30, description: "Tailored beard grooming with precision lining." },
       { slug: "bang-trim", name: "Bang Trim", price: 15, from: true, minutes: 15 },
       { slug: "bald-fade", name: "Bald Fade", price: 55, from: true, minutes: 45, description: "Smooth transition from longer on top to skin at the sides/back." },
       { slug: "blow-out", name: "Blow Out / Diffuse", price: 40, from: true, minutes: 45 },
@@ -169,20 +172,20 @@ export const serviceGroups: ServiceGroup[] = [
     title: "Facial Waxing",
     blurb: "Quick, tidy, and easy to add on to any cut.",
     services: [
-      { slug: "wax-eyebrow", name: "Eyebrow", price: 12, from: true, minutes: 15 },
-      { slug: "wax-nose", name: "Nose", price: 12, from: true, minutes: 10 },
-      { slug: "wax-ears", name: "Ears", price: 12, from: true, minutes: 10 },
-      { slug: "wax-double", name: "Double", price: 20, from: true, minutes: 20, description: "Any two areas." },
-      { slug: "wax-triple", name: "Triple", price: 40, from: true, minutes: 20, description: "Brow + ears + nose." },
+      { slug: "wax-eyebrow", name: "Eyebrows", price: 12, minutes: 15 },
+      { slug: "wax-nose", name: "Nose", price: 12, minutes: 15 },
+      { slug: "wax-ears", name: "Ears", price: 12, minutes: 15 },
+      { slug: "wax-double", name: "Double", price: 20, minutes: 20, description: "Any two areas." },
+      { slug: "wax-triple", name: "Triple", price: 30, minutes: 30, description: "Brows + nose + ears." },
     ],
   },
   {
     id: "color",
     title: "Color",
-    blurb: "Start with a free consultation, then book the service.",
+    blurb: "Every color service starts with a free, required consultation.",
     services: [
-      { slug: "color-consultation", name: "Color Consultation", price: 0, minutes: 15 },
-      { slug: "color-application", name: "Hair Color Application", price: 75, minutes: 120, description: "Root touch-ups, balayage, and more." },
+      { slug: "color-consultation", name: "Color Consultation", price: 0, minutes: 15, description: "Required before any color appointment. We’ll plan the look and the time it needs." },
+      { slug: "color-application", name: "Hair Color Application", price: 75, per: "hour", minutes: 120, description: "Root touch-ups, balayage, and more. Billed by the hour; your consultation sets the time." },
     ],
   },
 ];
@@ -200,7 +203,7 @@ export function groupOf(service: Service): ServiceGroup {
 
 export function formatPrice(s: Service): string {
   if (s.price === 0) return "Free";
-  return `${s.from ? "from " : ""}$${s.price}`;
+  return `${s.from ? "from " : ""}$${s.price}${s.per === "hour" ? "/hr" : ""}`;
 }
 
 export function formatDuration(minutes: number): string {
@@ -262,11 +265,8 @@ export const photos: {
 } = {
   /* Hero: the client chair in Stevie's suite. */
   studio: { src: "/images/studio/chair.webp", alt: "The client chair in Stevie’s suite at Salons by JC" },
-  /*
-    About page slot. The client folder has no portrait of Stevie yet, so this
-    is a wide shot of the suite; swap for a headshot when one arrives.
-  */
-  portrait: { src: "/images/studio/suite.webp", alt: "Stevie’s suite: lit mirror, olive tool cabinet, and barber chair" },
+  /* About page slot: Stevie's headshot (sent 2026-10-05), cropped 4:5. */
+  portrait: { src: "/images/stevie.webp", alt: "Stevie Cain smiling in front of a brick wall" },
   /* Visit page strip. */
   suite: [
     { src: "/images/studio/barber-chair.webp", alt: "Vintage barber chair and shampoo bowl" },

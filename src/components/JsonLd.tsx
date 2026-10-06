@@ -60,8 +60,17 @@ export function JsonLd() {
       itemListElement: allServices.map((s) => ({
         "@type": "Offer",
         itemOffered: { "@type": "Service", name: s.name },
-        price: s.price,
-        priceCurrency: "USD",
+        ...(s.per === "hour"
+          ? {
+              priceSpecification: {
+                "@type": "UnitPriceSpecification",
+                price: s.price,
+                priceCurrency: "USD",
+                unitCode: "HUR",
+                unitText: "per hour",
+              },
+            }
+          : { price: s.price, priceCurrency: "USD" }),
       })),
     },
     potentialAction: {

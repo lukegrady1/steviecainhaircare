@@ -86,7 +86,7 @@ const SERVICES = [
   ["bald-fade", "Bald Fade", "from $55", 45, "Smooth transition from longer on top to skin at the sides/back."],
   ["buzz-cut", "Buzz Cut", "$25", 20, "Short, uniform clipper cut; clean and low-maintenance."],
   ["kids-haircut", "Kid's Haircut (10 & under)", "$30", 30, ""],
-  ["beard-trim", "Beard Trim", "$20", 15, "Tailored beard grooming with precision lining."],
+  ["beard-trim", "Beard Trim", "$20", 30, "Tailored beard grooming with precision lining."],
   ["bang-trim", "Bang Trim", "from $15", 15, ""],
   ["neck-clean-up", "Neck Clean Up", "$15", 10, ""],
   ["designs", "Designs", "$15", 15, "Clipper/trimmer designs on short cuts."],
@@ -94,13 +94,13 @@ const SERVICES = [
   ["hot-tool-styling", "Hot Tool Styling", "$40", 45, "Flat iron / curling iron finish."],
   ["up-dos", "Special Occasions / Up-Dos", "from $60", 75, ""],
   ["gray-blending", "Camouflage Gray Blending", "$35", 30, "For short hair."],
-  ["color-consultation", "Color Consultation", "Free", 15, ""],
-  ["color-application", "Hair Color Application", "$75", 120, "Root touch-ups, balayage, and more."],
-  ["wax-eyebrow", "Eyebrow Wax", "from $12", 10, ""],
-  ["wax-nose", "Nose Wax", "from $12", 10, ""],
-  ["wax-ears", "Ears Wax", "from $12", 10, ""],
-  ["wax-double", "Double Wax (any two areas)", "from $20", 15, ""],
-  ["wax-triple", "Triple Wax (brow + ears + nose)", "from $40", 20, ""],
+  ["color-consultation", "Color Consultation", "Free", 15, "Required before any color appointment."],
+  ["color-application", "Hair Color Application", "$75 per hour", 120, "Root touch-ups, balayage, and more. Billed by the hour after a free consultation."],
+  ["wax-eyebrow", "Eyebrow Wax", "$12", 15, ""],
+  ["wax-nose", "Nose Wax", "$12", 15, ""],
+  ["wax-ears", "Ears Wax", "$12", 15, ""],
+  ["wax-double", "Double Wax (any two areas)", "$20", 20, ""],
+  ["wax-triple", "Triple Wax (brows + nose + ears)", "$30", 30, ""],
 ].map(([slug, name, price, minutes, blurb]) => ({ slug, name, price, minutes, blurb }));
 
 /* ------------------------------------------------------------------ http */
@@ -213,7 +213,7 @@ function calendarPayload(svc, groupId, userId) {
     googleInvitationEmails: false,
     formSubmitType: "ThankYouMessage",
     formSubmitThanksMessage:
-      "You're booked! You'll get a confirmation by text and email, and a reminder the day before. See you soon. – Stevie",
+      "You're booked! You'll get a confirmation by email, and a reminder the day before. See you soon. – Stevie",
     guestType: "count_only",
     notes: `Booked from steviecainhaircare.com · ${svc.name} · ${svc.price}`,
   };
