@@ -11,13 +11,33 @@ const icons = [Ear, Scissors, Armchair];
   `compact` is the home-page teaser: quote, first paragraph, values, and a
   link to the full page. The About page renders everything and relies on
   PageHeader for its h1.
+
+  On a phone the teaser reads heading -> portrait -> text, so the quote
+  introduces the photo instead of trailing it (Luke, 2026-10-16). From lg the
+  grid puts the portrait in the left column spanning both rows, with the
+  heading and the text stacked in the right column, which is the original
+  side-by-side layout.
 */
 export function About({ compact = false }: { compact?: boolean }) {
   const paragraphs = compact ? about.body.slice(0, 1) : about.body;
+  const heading = compact ? (
+    <>
+      <p className="t-eyebrow text-sage-deep">About Stevie</p>
+      <h2 className="t-headline mt-3 text-3xl text-ink sm:text-4xl lg:text-5xl">{about.quote}</h2>
+    </>
+  ) : (
+    <h2 className="t-headline text-3xl text-ink sm:text-4xl">About me</h2>
+  );
   return (
     <section className="bg-surface py-16 sm:py-24">
-      <div className="mx-auto grid max-w-6xl gap-10 px-4 sm:px-6 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
-        <Reveal>
+      <div
+        className={`mx-auto grid max-w-6xl gap-10 px-4 sm:px-6 lg:grid-cols-[0.8fr_1.2fr] lg:gap-x-16 ${
+          compact ? "lg:gap-y-0" : "lg:gap-y-16"
+        }`}
+      >
+        {compact && <Reveal className="lg:col-start-2 lg:row-start-1 lg:self-end">{heading}</Reveal>}
+
+        <Reveal className={compact ? "order-2 lg:order-none lg:col-start-1 lg:row-span-2 lg:row-start-1" : ""}>
           <div className="relative mx-auto aspect-[4/5] w-full max-w-sm overflow-hidden rounded-[2rem] border border-line shadow-lift lg:max-w-none">
             {photos.portrait ? (
               <Image
@@ -37,16 +57,12 @@ export function About({ compact = false }: { compact?: boolean }) {
           </div>
         </Reveal>
 
-        <Reveal delay={80}>
-          {compact ? (
-            <>
-              <p className="t-eyebrow text-sage-deep">About Stevie</p>
-              <h2 className="t-headline mt-3 text-3xl text-ink sm:text-4xl lg:text-5xl">{about.quote}</h2>
-            </>
-          ) : (
-            <h2 className="t-headline text-3xl text-ink sm:text-4xl">About me</h2>
-          )}
-          <div className="mt-6 space-y-4 text-[1.05rem] leading-relaxed text-muted">
+        <Reveal
+          delay={80}
+          className={compact ? "order-3 lg:order-none lg:col-start-2 lg:row-start-2 lg:self-start" : ""}
+        >
+          {!compact && heading}
+          <div className={`space-y-4 text-[1.05rem] leading-relaxed text-muted ${compact ? "lg:mt-6" : "mt-6"}`}>
             {paragraphs.map((p) => (
               <p key={p.slice(0, 24)}>{p}</p>
             ))}
