@@ -1,4 +1,8 @@
-# GoHighLevel booking setup
+> **Status (2026-10-16, evening):** booking now runs on GoHighLevel's **Services** module (Calendars > *Services* tab), not calendars. `scripts/ghl-services.mjs` created three categories (Hair Services, Facial Waxing, Color) and the 20 services with Stevie as staff, price and duration; IDs are in `src/lib/ghl-calendars.json` under `services`. The site embeds the module's **Main booking page** (`site.bookingPage`), which lists every service, lets a client add a second one, then picks a time. Stevie is the only staff member, so one booking blocks her time across all services.
+>
+> Settings made in the GHL UI (Services > Staff / Global settings): Stevie's weekly working hours Sun 11–4, Wed–Thu 10–6, Fri–Sat 10–4 for all services (matching the GBP); service interval 15 min; 2-hour minimum notice; 60-day booking window; auto-confirm; timezone locked to US/Central; contacts assigned to Stevie. Notifications are email + in-app only, no SMS. Add-ons live under Services > Add-ons.
+>
+> Everything below about Meetings-tab calendars is historical. The 20 event calendars and the 20 service-booking calendars that replaced them for an afternoon are all inactive (IDs kept under `calendars` / `previousCalendars`). `scripts/ghl-setup.mjs` and `scripts/ghl-migrate-service-calendars.mjs` are obsolete; do not run them.
 
 > **Status (2026-09-27):** the 20 service calendars already exist in the Stevie Cain Hair Care sub-account (location `xIfkb7Kg1NAczAtcfybd`, group `1lWrH7rBiTdUtMO3Fh7G`, group widget slug `stevie-cain-hair-care`). Their IDs are in `src/lib/ghl-calendars.json` and the site embeds them. The script below is only needed if the calendars are ever recreated.
 >
@@ -8,7 +12,7 @@ Booking on steviecainhaircare.com is the GoHighLevel calendar widget, white-labe
 
 ## 1. Sub-account
 
-Create (or open) the **Stevie Cain Haircare** sub-account in the Grady Digital agency.
+Create (or open) the **Stevie Cain Hair Care** sub-account in the Grady Digital agency.
 
 - Business Profile: name, `3000 West Memorial Road, Suite 112, Oklahoma City, OK 73120`, phone `(512) 701-4520`, timezone **America/Chicago**.
 - Add Stevie as a user (she is the only team member every calendar assigns to).
@@ -30,7 +34,7 @@ node --env-file=.env.local scripts/ghl-setup.mjs --dry-run   # preview
 node --env-file=.env.local scripts/ghl-setup.mjs             # create
 ```
 
-It creates the **Stevie Cain Haircare** calendar group and 20 service calendars with these placeholder durations (from the brief, pending Stevie's confirmation):
+It creates the **Stevie Cain Hair Care** calendar group and 20 service calendars with these placeholder durations (from the brief, pending Stevie's confirmation):
 
 | Service | Duration | Price |
 | --- | --- | --- |
@@ -55,7 +59,7 @@ It creates the **Stevie Cain Haircare** calendar group and 20 service calendars 
 | Double Wax | 20 min | $20 |
 | Triple Wax | 30 min | $30 |
 
-Every calendar gets: availability Sun 11–4, Wed–Fri 10–6, Sat 10–4 (closed Mon/Tue); 15-minute slot interval; 2-hour minimum notice; bookable 2 months out; auto-confirm; reschedule and cancel allowed; and these notifications:
+Every calendar gets: availability Sun 11–4, Wed–Fri 10–6, Sat 10–4 (closed Mon/Tue); 30-minute slot interval (start times); 2-hour minimum notice; bookable 2 months out; auto-confirm; reschedule and cancel allowed; and these notifications:
 
 - Contact: booked confirmation (email + SMS), 24-hour reminder (email + SMS), cancellation and reschedule (email + SMS)
 - Stevie: booked alert (email + in-app)
@@ -65,7 +69,7 @@ The script then writes each calendar's ID into `src/lib/ghl-calendars.json`. Reb
 ## 4. Two things the public API can't set (do in the GHL UI)
 
 1. **Service Price.** Calendars > each service > Service Details > Price. The price is already in each calendar's description, so the widget shows it either way; this field is only needed if payments are ever turned on.
-2. **Booking form with the notes field.** Sites > Forms > Builder > create `Stevie Cain Haircare Booking` with: First Name, Last Name, Phone, Email (all required) and a Multi-line Text field labelled **"Tell me about the look you're going for"** (optional). Then Calendars > each service > Forms & Payments > select that form. Doing it on one calendar and using "Copy settings" (or the calendar duplicate flow) is the quick way across all 20. Without this, the widget uses GHL's default form: first name, last name, phone, email. That still satisfies every required field, only the optional notes box is missing.
+2. **Booking form with the notes field.** Sites > Forms > Builder > create `Stevie Cain Hair Care Booking` with: First Name, Last Name, Phone, Email (all required) and a Multi-line Text field labelled **"Tell me about the look you're going for"** (optional). Then Calendars > each service > Forms & Payments > select that form. Doing it on one calendar and using "Copy settings" (or the calendar duplicate flow) is the quick way across all 20. Without this, the widget uses GHL's default form: first name, last name, phone, email. That still satisfies every required field, only the optional notes box is missing.
 
 ## 5. Verify
 

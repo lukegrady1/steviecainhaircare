@@ -17,14 +17,16 @@ const sans = Manrope({
   display: "swap",
 });
 
-const title = "Stevie Cain Haircare | Haircuts & Styling in Oklahoma City, OK";
+const title = "Stevie Cain Hair Care | Haircuts & Styling in Oklahoma City, OK";
 const description =
   "Personalized haircuts, styling, color, and facial waxing in OKC. Stevie Cain is a solo stylist inside Salons by JC on West Memorial Road. Book online in seconds.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: { default: title, template: "%s | Stevie Cain Haircare" },
+  title: { default: title, template: "%s | Stevie Cain Hair Care" },
   description,
+  /* Each page sets its own canonical; this covers the home page. */
+  alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -35,6 +37,13 @@ export const metadata: Metadata = {
   },
   twitter: { card: "summary_large_image", title, description },
   robots: { index: true, follow: true },
+  /*
+    Google Search Console HTML-tag verification. Set the env var in Netlify
+    and redeploy; with it unset no meta tag is rendered.
+  */
+  verification: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
+    ? { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION }
+    : undefined,
 };
 
 export const viewport: Viewport = {

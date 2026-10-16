@@ -4,9 +4,10 @@ import { Gallery } from "@/components/Gallery";
 import { PageHeader } from "@/components/PageHeader";
 
 export const metadata: Metadata = {
-  title: "Gallery",
+  title: "Haircut Gallery, Oklahoma City",
+  alternates: { canonical: "/gallery/" },
   description:
-    "Recent haircuts, fades, color, and styling from Stevie Cain Haircare in Oklahoma City.",
+    "Recent haircuts, fades, color, and styling from Stevie Cain Hair Care in Oklahoma City.",
 };
 
 export default function GalleryPage() {

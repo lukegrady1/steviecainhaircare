@@ -5,7 +5,8 @@ import { PageHeader } from "@/components/PageHeader";
 import { Reviews } from "@/components/Reviews";
 
 export const metadata: Metadata = {
-  title: "About Stevie",
+  title: "About Stevie, Hair Stylist in Oklahoma City",
+  alternates: { canonical: "/about/" },
   description:
     "Meet Stevie Cain, a cosmetologist with 10 years of experience specializing in haircutting, inside Salons by JC in Oklahoma City. Personalized cuts in a laid-back, friendly chair.",
 };

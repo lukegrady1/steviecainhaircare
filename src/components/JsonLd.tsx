@@ -1,8 +1,14 @@
-import { allServices, hours, reviews, site, siteUrl, visit } from "@/lib/site";
+import { allServices, hours, site, siteUrl, visit } from "@/lib/site";
 
 /*
   LocalBusiness > HairSalon structured data. Everything here mirrors lib/site.ts
   so the markup can never disagree with what is on the page.
+
+  No aggregateRating or review here on purpose. Google's review-snippet
+  guidelines exclude "self-serving" ratings (a business marking up reviews of
+  itself on its own site), and the on-page 5.0 / 9 figure is not sourced
+  from the Google Business Profile. The testimonials stay visible on the page;
+  they just are not declared as schema.
 */
 export function JsonLd() {
   const data = {
@@ -13,7 +19,9 @@ export function JsonLd() {
     slogan: site.tagline,
     url: siteUrl,
     telephone: "+1-512-701-4520",
-    image: `${siteUrl}/og-image.png`,
+    /* /opengraph-image is the 1200x630 card Next renders at build time. */
+    image: `${siteUrl}/opengraph-image`,
+    logo: `${siteUrl}/images/logo.webp`,
     priceRange: "$12 - $75",
     currenciesAccepted: "USD",
     paymentAccepted: visit.payment.join(", "),
@@ -25,6 +33,9 @@ export function JsonLd() {
       postalCode: site.address.zip,
       addressCountry: "US",
     },
+    geo: { "@type": "GeoCoordinates", latitude: 35.6077518, longitude: -97.5685496 },
+    hasMap: site.google.profileUrl,
+    sameAs: [site.google.profileUrl, site.social.facebook, site.social.instagram],
     containedInPlace: { "@type": "Place", name: "Salons by JC" },
     founder: { "@type": "Person", name: site.owner, jobTitle: "Hair Stylist" },
     employee: { "@type": "Person", name: site.owner },
@@ -43,17 +54,6 @@ export function JsonLd() {
     })),
     isAccessibleForFree: false,
     knowsLanguage: "en",
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: site.rating.value,
-      reviewCount: site.rating.count,
-      bestRating: "5",
-    },
-    review: reviews.map((r) => ({
-      "@type": "Review",
-      reviewBody: r.quote,
-      author: { "@type": "Person", name: r.name },
-    })),
     hasOfferCatalog: {
       "@type": "OfferCatalog",
       name: "Services",

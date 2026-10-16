@@ -234,7 +234,8 @@ async function ensureCalendars(groupId, userId) {
     }
     let id;
     if (found) {
-      const { locationId: _l, ...update } = payload;
+      const update = { ...payload };
+      delete update.locationId;
       await api("PUT", `/calendars/${found.id}`, update);
       id = found.id;
       console.log(`Updated  ${svc.name.padEnd(34)} ${id}`);

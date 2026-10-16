@@ -7,7 +7,7 @@ import calendarMap from "./ghl-calendars.json";
 */
 
 export const site = {
-  name: "Stevie Cain Haircare",
+  name: "Stevie Cain Hair Care",
   tagline: "Good Hair for All Y’all!",
   subline: "Personalized haircuts & styling in Oklahoma City",
   owner: "Stevie Cain",
@@ -21,16 +21,40 @@ export const site = {
     zip: "73120",
   },
   /*
-    Searching by name + address lands on the Business Profile pin rather than
-    a bare rooftop marker. The embed uses the same query so the two agree.
+    Public contact email for the Privacy Policy and Terms pages. Null until
+    Stevie confirms which inbox she wants published; the pages then show the
+    phone number only.
   */
-  mapsQuery:
-    "Stevie Cain Haircare, 3000 West Memorial Road Suite 112, Oklahoma City, OK 73120",
+  email: null as string | null,
+  /*
+    Google Business Profile. The Place ID was derived from the Maps embed Luke
+    pasted on 2026-10-16 (hex pair 0x87b21d73cc644537:0x4b1f6ba12b0fcee9) and
+    verified to open "Stevie Cain Hair Care" on Google Maps. Directions, the
+    map embed, "Find us on Google", and the review link all use it, so they
+    land on the verified profile rather than a bare address pin.
+  */
+  /* Public profiles, confirmed by Luke 2026-10-16; used in schema sameAs. */
+  social: {
+    facebook: "https://www.facebook.com/stevie.cain.524/",
+    instagram: "https://www.instagram.com/decaf_stevie/",
+  },
+  google: {
+    placeId: "ChIJN0VkzHMdsocR6c4PK6FrH0s",
+    cid: "5413163617078988521",
+    get profileUrl() {
+      return `https://www.google.com/maps/place/?q=place_id:${this.placeId}`;
+    },
+    get reviewUrl() {
+      return `https://search.google.com/local/writereview?placeid=${this.placeId}`;
+    },
+    embedSrc:
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3243.8100529202393!2d-97.5685496!3d35.607751799999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87b21d73cc644537%3A0x4b1f6ba12b0fcee9!2sStevie%20Cain%20Hair%20Care!5e0!3m2!1sen!2sus!4v1792172057701!5m2!1sen!2sus",
+  },
   get mapsHref() {
-    return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(this.mapsQuery)}`;
+    return this.google.profileUrl;
   },
   get mapsEmbedSrc() {
-    return `https://www.google.com/maps?q=${encodeURIComponent(this.mapsQuery)}&z=15&output=embed`;
+    return this.google.embedSrc;
   },
   rating: { value: "5.0", count: 9 },
   /*
@@ -38,6 +62,16 @@ export const site = {
     Widgets and form_embed.js are served from here.
   */
   ghlHost: "https://api.gradydigital.com",
+  /*
+    GoHighLevel *Services* booking page (Calendars > Services > Booking pages >
+    Main booking page). One page lists every service by category; the visitor
+    picks the service, then a time. It does not support preselecting a service
+    from the URL (tested 2026-10-16), so every Book button lands on the menu.
+    heightMode=full lets form_embed.js grow the iframe to the content so the
+    page scrolls instead of the frame; showHeader=false drops GHL's title bar.
+  */
+  bookingPage:
+    "https://api.gradydigital.com/booking/stevie-cain-hair-care-tnqwvqykyt?heightMode=full&showHeader=false",
 } as const;
 
 /* Site navigation. Book lives in the header button, not the link row. */
@@ -47,6 +81,12 @@ export const nav = [
   { label: "Services", href: "/services/" },
   { label: "Gallery", href: "/gallery/" },
   { label: "Visit", href: "/visit/" },
+] as const;
+
+/* Footer-only pages. Carriers check both during A2P 10DLC registration. */
+export const legalNav = [
+  { label: "Privacy Policy", href: "/privacy/" },
+  { label: "Terms & Conditions", href: "/terms/" },
 ] as const;
 
 /* Every Book button links here; ?service= preselects the calendar. */
@@ -90,18 +130,18 @@ export const about = {
   ],
 } as const;
 
-/* Sunday first, matching the brief. `open`/`close` are 24h for schema + GHL. */
+/* Sunday first. Hours match the Google Business Profile (checked 2026-10-16). `open`/`close` are 24h for schema + GHL. */
 export const hours = [
   { day: "Sunday", short: "Sun", open: "11:00", close: "16:00", label: "11:00 AM – 4:00 PM" },
   { day: "Monday", short: "Mon", open: null, close: null, label: "Closed" },
   { day: "Tuesday", short: "Tue", open: null, close: null, label: "Closed" },
   { day: "Wednesday", short: "Wed", open: "10:00", close: "18:00", label: "10:00 AM – 6:00 PM" },
   { day: "Thursday", short: "Thu", open: "10:00", close: "18:00", label: "10:00 AM – 6:00 PM" },
-  { day: "Friday", short: "Fri", open: "10:00", close: "18:00", label: "10:00 AM – 6:00 PM" },
+  { day: "Friday", short: "Fri", open: "10:00", close: "16:00", label: "10:00 AM – 4:00 PM" },
   { day: "Saturday", short: "Sat", open: "10:00", close: "16:00", label: "10:00 AM – 4:00 PM" },
 ] as const;
 
-export const hoursSummary = "Wed–Fri 10–6 · Sat 10–4 · Sun 11–4 · Closed Mon & Tue";
+export const hoursSummary = "Wed–Thu 10–6 · Fri–Sat 10–4 · Sun 11–4 · Closed Mon & Tue";
 
 export const visit = {
   walkIns: "Walk-ins welcome. Appointments recommended.",
@@ -214,17 +254,14 @@ export function formatDuration(minutes: number): string {
 }
 
 /*
-  GoHighLevel calendar per service. scripts/ghl-setup.mjs writes the map; an
-  empty string means the calendar has not been created yet and the booking
-  section falls back to click-to-call for that service.
+  GoHighLevel service ID per site service slug (Services module), written by
+  scripts/ghl-services.mjs. The booking embed does not need these; they are
+  kept for scripts and for checking that the menu matches site.ts.
 */
-export function calendarIdFor(slug: string): string {
-  const map = calendarMap.calendars as Record<string, string>;
+export function ghlServiceIdFor(slug: string): string {
+  const map = (calendarMap as { services?: Record<string, string> }).services ?? {};
   return map[slug] ?? "";
 }
-
-/* GHL "service menu" widget: every calendar in the group, chosen inside the embed. */
-export const groupWidgetSrc = `${site.ghlHost}/widget/groups/${calendarMap.groupSlug}`;
 
 export const defaultServiceSlug = "short-haircut";
 

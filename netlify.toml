@@ -10,3 +10,20 @@
 
 [build.environment]
   NODE_VERSION = "20"
+
+# Hashed build assets never change, so let browsers keep them for a year.
+[[headers]]
+  for = "/_next/static/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Baseline security headers for a static marketing site. frame-ancestors is
+# not set because nothing here needs to be framed; the booking widget and
+# map are iframes *we* embed, which this does not affect.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"

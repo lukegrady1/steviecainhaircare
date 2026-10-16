@@ -18,7 +18,7 @@ export function Services({ compact = false }: { compact?: boolean }) {
         {compact && (
           <Reveal className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
             <div className="max-w-2xl">
-              <p className="t-eyebrow text-sage">Services &amp; Pricing</p>
+              <p className="t-eyebrow text-sage-deep">Services &amp; Pricing</p>
               <h2 className="t-headline mt-3 text-3xl text-ink sm:text-4xl lg:text-5xl">
                 Cuts, color, and a clean finish.
               </h2>
@@ -37,7 +37,7 @@ export function Services({ compact = false }: { compact?: boolean }) {
           <div className="mt-10 grid gap-6 lg:grid-cols-3 lg:items-start">
             {serviceGroups.map((g, i) => (
               <Reveal key={g.id} delay={i * 80}>
-                <GroupCard group={g} services={g.services.slice(0, g.id === "hair" ? 5 : 5)} more />
+                <GroupCard group={g} services={g.services.slice(0, 5)} more />
               </Reveal>
             ))}
           </div>
@@ -61,6 +61,10 @@ export function Services({ compact = false }: { compact?: boolean }) {
   );
 }
 
+/*
+  On the home page the section has its own h2, so each group is an h3. On
+  the Services page the h1 is the page header, so the groups are h2s.
+*/
 function GroupCard({
   group,
   services,
@@ -73,9 +77,10 @@ function GroupCard({
   more?: boolean;
 }) {
   const hidden = group.services.length - services.length;
+  const Heading = more ? "h3" : "h2";
   return (
     <div className="card p-5 sm:p-6">
-      <h3 className="t-headline text-2xl text-ink">{group.title}</h3>
+      <Heading className="t-headline text-2xl text-ink">{group.title}</Heading>
       <p className="mt-1 text-sm text-muted">{group.blurb}</p>
       <ul className={`mt-5 ${columns ? "md:grid md:grid-cols-2 md:gap-x-8" : ""}`}>
         {services.map((s) => (

@@ -8,7 +8,7 @@ export function Reviews() {
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <Reveal className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
           <div className="max-w-xl">
-            <p className="t-eyebrow text-sage">Reviews</p>
+            <p className="t-eyebrow text-sage-deep">Reviews</p>
             <h2 className="t-headline mt-3 text-3xl sm:text-4xl lg:text-5xl">
               Folks leave the chair happy.
             </h2>
@@ -30,21 +30,24 @@ export function Reviews() {
 
         <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {reviews.map((r, i) => (
-            <Reveal key={r.name} delay={i * 70}>
-              <li className="flex h-full flex-col rounded-2xl border border-line bg-surface p-5">
+            <Reveal
+              as="li"
+              key={r.name}
+              delay={i * 70}
+              className="flex h-full flex-col rounded-2xl border border-line bg-surface p-5"
+            >
                 <Quotes size={26} weight="fill" className="text-sage" aria-hidden="true" />
                 <blockquote className="mt-3 flex-1 text-[1.02rem] leading-relaxed text-ink">
                   “{r.quote}”
                 </blockquote>
                 <footer className="mt-4 flex items-center justify-between text-sm">
                   <cite className="not-italic font-semibold">{r.name}</cite>
-                  <span className="flex gap-0.5 text-sage" aria-label="5 out of 5 stars">
+                  <span role="img" className="flex gap-0.5 text-sage" aria-label="5 out of 5 stars">
                     {Array.from({ length: 5 }).map((_, k) => (
                       <Star key={k} size={13} weight="fill" aria-hidden="true" />
                     ))}
                   </span>
                 </footer>
-              </li>
             </Reveal>
           ))}
         </ul>

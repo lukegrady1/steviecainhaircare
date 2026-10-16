@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 /*
-  Stevie Cain Haircare — design tokens
+  Stevie Cain Hair Care — design tokens
 
   Client brief: sage green and a soft beige, black for type, minimal.
   Beige is the ground, sage does every job an accent would (buttons, eyebrow
@@ -191,6 +191,49 @@ body {
       rgb(26 26 26 / 0.05) 14px 15px
     );
   }
+}
+
+/* Privacy Policy and Terms: plain prose, one column, generous spacing. */
+.legal {
+  color: var(--color-muted);
+  line-height: 1.7;
+}
+.legal h2 {
+  margin-top: 2.5rem;
+  font-weight: 600;
+  font-size: 1.375rem;
+  letter-spacing: -0.015em;
+  color: var(--color-ink);
+}
+.legal h3 {
+  margin-top: 1.5rem;
+  font-weight: 600;
+  color: var(--color-ink);
+}
+.legal p,
+.legal ul {
+  margin-top: 0.9rem;
+}
+.legal ul {
+  padding-left: 1.25rem;
+  list-style: disc;
+}
+.legal li + li {
+  margin-top: 0.35rem;
+}
+.legal strong {
+  color: var(--color-ink);
+  font-weight: 600;
+}
+.legal a {
+  color: var(--color-ink);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: rgb(107 122 94 / 0.6);
+  text-underline-offset: 4px;
+}
+.legal a:hover {
+  color: var(--color-sage);
 }
 
 /* Scroll reveal. Elements start visible if JS never runs. */

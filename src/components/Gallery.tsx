@@ -20,7 +20,7 @@ export function Gallery({ compact = false }: { compact?: boolean }) {
         {compact && (
           <Reveal className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
             <div className="max-w-2xl">
-              <p className="t-eyebrow text-sage">Gallery</p>
+              <p className="t-eyebrow text-sage-deep">Gallery</p>
               <h2 className="t-headline mt-3 text-3xl text-ink sm:text-4xl lg:text-5xl">
                 Recent work from the chair.
               </h2>
@@ -39,8 +39,12 @@ export function Gallery({ compact = false }: { compact?: boolean }) {
         ) : (
           <ul className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
             {gallery.map((g, i) => (
-              <Reveal key={`${g.alt}-${i}`} delay={(i % 4) * 60}>
-                <li className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-line bg-beige-deep">
+              <Reveal
+                as="li"
+                key={`${g.alt}-${i}`}
+                delay={(i % 4) * 60}
+                className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-line bg-beige-deep"
+              >
                   {g.src ? (
                     <Image
                       src={g.src}
@@ -57,7 +61,6 @@ export function Gallery({ compact = false }: { compact?: boolean }) {
                       </span>
                     </div>
                   )}
-                </li>
               </Reveal>
             ))}
           </ul>

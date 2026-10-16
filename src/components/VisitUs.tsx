@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { MapPin, Car, CreditCard, Sparkle, ArrowSquareOut, Storefront, ArrowRight } from "@phosphor-icons/react/dist/ssr";
+import { MapPin, Car, CreditCard, Sparkle, ArrowSquareOut, Storefront, ArrowRight, GoogleLogo, Star } from "@phosphor-icons/react/dist/ssr";
 import Image from "next/image";
 import { HoursTable } from "./HoursTable";
 import { Reveal } from "./Reveal";
@@ -10,13 +10,15 @@ import { photos, site, visit } from "@/lib/site";
   page; the Visit page supplies its own h1 via PageHeader.
 */
 export function VisitUs({ compact = false }: { compact?: boolean }) {
+  /* Home page: h2 section heading above, so Hours is an h3. Visit page: h2. */
+  const HoursHeading = compact ? "h3" : "h2";
   return (
     <section className="bg-surface py-16 sm:py-24">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         {compact && (
           <Reveal className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
             <div className="max-w-2xl">
-              <p className="t-eyebrow text-sage">Visit Us</p>
+              <p className="t-eyebrow text-sage-deep">Visit Us</p>
               <h2 className="t-headline mt-3 text-3xl text-ink sm:text-4xl lg:text-5xl">
                 Inside Salons by JC, Suite 112.
               </h2>
@@ -34,10 +36,13 @@ export function VisitUs({ compact = false }: { compact?: boolean }) {
         {!compact && photos.suite.length > 0 && (
           <ul className="mb-8 grid grid-cols-3 gap-3 sm:gap-4">
             {photos.suite.map((p, i) => (
-              <Reveal key={p.src} delay={i * 60}>
-                <li className="relative aspect-[3/4] overflow-hidden rounded-2xl border border-line sm:aspect-[4/3]">
-                  <Image src={p.src} alt={p.alt} fill sizes="33vw" className="object-cover" />
-                </li>
+              <Reveal
+                as="li"
+                key={p.src}
+                delay={i * 60}
+                className="relative aspect-[3/4] overflow-hidden rounded-2xl border border-line sm:aspect-[4/3]"
+              >
+                <Image src={p.src} alt={p.alt} fill sizes="33vw" className="object-cover" />
               </Reveal>
             ))}
           </ul>
@@ -76,8 +81,32 @@ export function VisitUs({ compact = false }: { compact?: boolean }) {
                   Call {site.phone}
                 </a>
               </div>
+              <ul className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-sm">
+                <li>
+                  <a
+                    href={site.google.profileUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="focus-ring inline-flex items-center gap-1.5 rounded font-semibold text-ink hover:text-sage"
+                  >
+                    <GoogleLogo size={16} weight="bold" aria-hidden="true" />
+                    Find us on Google
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href={site.google.reviewUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="focus-ring inline-flex items-center gap-1.5 rounded font-semibold text-ink hover:text-sage"
+                  >
+                    <Star size={16} weight="fill" aria-hidden="true" />
+                    Leave a Google review
+                  </a>
+                </li>
+              </ul>
 
-              <h3 className="mt-8 font-semibold text-ink">Hours</h3>
+              <HoursHeading className="mt-8 font-semibold text-ink">Hours</HoursHeading>
               <p className="mt-1 text-sm text-muted">{visit.walkIns}</p>
               <div className="mt-3">
                 <HoursTable />
@@ -103,7 +132,7 @@ export function VisitUs({ compact = false }: { compact?: boolean }) {
                 src={site.mapsEmbedSrc}
                 title={`Map to ${site.name}`}
                 loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
+                referrerPolicy="strict-origin-when-cross-origin"
                 allowFullScreen
                 className="h-full min-h-[22rem] w-full border-0 lg:min-h-[36rem]"
               />

@@ -74,7 +74,7 @@ export function GallerySlider({
         ref={track}
         className="no-scrollbar -mx-4 flex snap-x snap-mandatory gap-3 overflow-x-auto scroll-smooth px-4 scroll-pl-4 sm:-mx-6 sm:gap-4 sm:px-6 sm:scroll-pl-6"
       >
-        {items.map((g, i) => (
+        {items.map((g) => (
           <li
             key={g.src}
             className="relative aspect-[4/5] w-[68%] shrink-0 snap-start overflow-hidden rounded-2xl border border-line bg-beige-deep sm:w-[calc((100%-1rem)/2)] lg:w-[calc((100%-3rem)/4)]"
@@ -84,7 +84,6 @@ export function GallerySlider({
               alt={g.alt}
               fill
               sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 68vw"
-              priority={i < 2}
               className="object-cover"
             />
           </li>

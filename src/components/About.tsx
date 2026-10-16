@@ -40,7 +40,7 @@ export function About({ compact = false }: { compact?: boolean }) {
         <Reveal delay={80}>
           {compact ? (
             <>
-              <p className="t-eyebrow text-sage">About Stevie</p>
+              <p className="t-eyebrow text-sage-deep">About Stevie</p>
               <h2 className="t-headline mt-3 text-3xl text-ink sm:text-4xl lg:text-5xl">{about.quote}</h2>
             </>
           ) : (

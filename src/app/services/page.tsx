@@ -4,9 +4,10 @@ import { PageHeader } from "@/components/PageHeader";
 import { Services } from "@/components/Services";
 
 export const metadata: Metadata = {
-  title: "Services & Pricing",
+  title: "Haircut & Hair Service Prices in Oklahoma City",
+  alternates: { canonical: "/services/" },
   description:
-    "Haircut, fade, beard, styling, color, and facial waxing prices at Stevie Cain Haircare in Oklahoma City. Short haircuts from $45, long haircuts $60, color $75 per hour after a free consultation.",
+    "Haircut, fade, beard, styling, color, and facial waxing prices at Stevie Cain Hair Care in Oklahoma City. Short haircuts from $45, long haircuts $60, color $75 per hour after a free consultation.",
 };
 
 export default function ServicesPage() {
@@ -15,7 +16,7 @@ export default function ServicesPage() {
       <PageHeader
         eyebrow="Services & Pricing"
         title="Cuts, color, and a clean finish."
-        intro="Tap Book on any service and the calendar opens with it selected. Prices marked “from” depend on length and detail."
+        intro="Tap Book on any service to open the booking menu and pick a time. Prices marked “from” depend on length and detail."
       />
       <Services />
       <CtaBand />

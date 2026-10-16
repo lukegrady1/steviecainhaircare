@@ -4,7 +4,8 @@ import { PageHeader } from "@/components/PageHeader";
 import { hoursSummary, site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Book Online",
+  title: "Book a Haircut Online in Oklahoma City",
+  alternates: { canonical: "/book/" },
   description:
     "Book a haircut, color, styling, or facial waxing appointment with Stevie Cain in Oklahoma City. Pick a service and a time; confirmations by email.",
 };
@@ -15,7 +16,7 @@ export default function BookPage() {
       <PageHeader
         eyebrow="Book Online"
         title="Pick a service, pick a time."
-        intro={`Choose a service below, then a day and time. You’ll get a confirmation by email, plus a reminder the day before. ${hoursSummary}.`}
+        intro={`Pick a service (add a second one if you like), then a day and time. You’ll get a confirmation by email, plus a reminder the day before. ${hoursSummary}.`}
       />
       <section className="bg-beige-deep/50 py-10 sm:py-14">
         <div className="mx-auto max-w-4xl px-4 sm:px-6">

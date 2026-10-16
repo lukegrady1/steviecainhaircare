@@ -7,7 +7,7 @@ import { NavLinks } from "./NavLinks";
 import { site } from "@/lib/site";
 
 /* Intrinsic size of public/images/logo.webp; the class sets the rendered height. */
-const LOGO = { w: 640, h: 575 };
+const LOGO = { w: 480, h: 431 };
 
 /*
   Sticky header. On a phone: logo, call, Book Now, menu. The two things a
@@ -27,7 +27,7 @@ export function Header() {
           */}
           <Image
             src="/images/logo.webp"
-            alt="Stevie Cain Haircare"
+            alt="Stevie Cain Hair Care"
             width={LOGO.w}
             height={LOGO.h}
             priority
