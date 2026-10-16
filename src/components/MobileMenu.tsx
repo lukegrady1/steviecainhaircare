@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { List, X } from "@phosphor-icons/react";
@@ -9,16 +9,36 @@ import { nav, site } from "@/lib/site";
 /*
   Phone-only nav. A sheet under the header rather than a full-screen overlay:
   the page is short, the links are few, and the Book button stays visible.
+
+  The sheet closes on any route change, not just its own links: the header's
+  Book Now button and logo navigate client-side, so without this the sheet
+  stayed open on the next page. Escape closes it too.
 */
 export function MobileMenu() {
-  const [open, setOpen] = useState(false);
   const pathname = usePathname();
+  /*
+    The sheet remembers which path it was opened on; it counts as open only
+    while that is still the current path, so navigating anywhere closes it
+    with no effect or extra state.
+  */
+  const [openOn, setOpenOn] = useState<string | null>(null);
+  const open = openOn === pathname;
+  const setOpen = (next: boolean) => setOpenOn(next ? pathname : null);
+
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpenOn(null);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open]);
 
   return (
     <div className="md:hidden">
       <button
         type="button"
-        onClick={() => setOpen((o) => !o)}
+        onClick={() => setOpen(!open)}
         aria-expanded={open}
         aria-controls="mobile-nav"
         aria-label={open ? "Close menu" : "Open menu"}
