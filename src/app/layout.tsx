@@ -55,8 +55,13 @@ export const viewport: Viewport = {
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
+  /*
+    data-scroll-behavior lets the Next router switch off the CSS smooth
+    scrolling while it jumps to the top on navigation; without it the
+    animated scroll races the new page's layout and lands partway down.
+  */
   return (
-    <html lang="en" className={sans.variable}>
+    <html lang="en" className={sans.variable} data-scroll-behavior="smooth">
       <body className="min-h-dvh">
         <JsonLd />
         <Header />
