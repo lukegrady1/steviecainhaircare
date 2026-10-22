@@ -75,7 +75,7 @@ export function JsonLd() {
     },
     potentialAction: {
       "@type": "ReserveAction",
-      target: `${siteUrl}/book/`,
+      target: site.vagaro.bookNow,
       name: "Book an appointment",
     },
   };

@@ -1,11 +1,9 @@
-import Link from "next/link";
 import { bookHref } from "@/lib/site";
 
 /*
-  A "Book" link. With `slug`, the booking page opens with that service
-  already selected in the calendar picker; without, it opens on the default.
-  A plain link rather than a button so it works before hydration and can be
-  opened in a new tab.
+  A "Book" link. Booking lives on Vagaro, so this opens Vagaro in a new tab:
+  with `slug`, the services list (each service has its own Book Now there);
+  without, the booking page. A plain anchor so it works before hydration.
 */
 export function BookButton({
   slug,
@@ -19,8 +17,14 @@ export function BookButton({
   ariaLabel?: string;
 }) {
   return (
-    <Link href={bookHref(slug)} className={`${className} focus-ring`} aria-label={ariaLabel}>
+    <a
+      href={bookHref(slug)}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`${className} focus-ring`}
+      aria-label={ariaLabel}
+    >
       {children}
-    </Link>
+    </a>
   );
 }

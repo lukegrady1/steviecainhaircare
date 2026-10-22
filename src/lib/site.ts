@@ -58,21 +58,18 @@ export const site = {
   },
   rating: { value: "5.0", count: 9 },
   /*
-    GoHighLevel branded domain for this sub-account (Business Profile > Branded
-    Domain, CNAME to brand.ludicrous.cloud). Booking page, reschedule/cancel
-    links and form_embed.js are served from here; no agency domain is exposed.
+    Booking runs on Stevie's existing Vagaro account (decided 2026-10-22; the
+    GoHighLevel Services booking page is no longer used). Vagaro requires the
+    client to sign in to a Vagaro account, and its login cookies are blocked
+    inside a cross-site iframe on Safari/iOS, so the site links out to Vagaro
+    in a new tab rather than embedding it. Vagaro has no per-service deep
+    links: the services page lists every service with its own Book Now.
   */
-  ghlHost: "https://book.steviecainhaircare.com",
-  /*
-    GoHighLevel *Services* booking page (Calendars > Services > Booking pages >
-    Main booking page). One page lists every service by category; the visitor
-    picks the service, then a time. It does not support preselecting a service
-    from the URL (tested 2026-10-16), so every Book button lands on the menu.
-    heightMode=full lets form_embed.js grow the iframe to the content so the
-    page scrolls instead of the frame; showHeader=false drops GHL's title bar.
-  */
-  bookingPage:
-    "https://book.steviecainhaircare.com/booking/stevie-cain-hair-care-tnqwvqykyt?heightMode=full&showHeader=false",
+  vagaro: {
+    profile: "https://www.vagaro.com/steviecainhaircare",
+    bookNow: "https://www.vagaro.com/steviecainhaircare/book-now",
+    services: "https://www.vagaro.com/steviecainhaircare/services",
+  },
 } as const;
 
 /* Site navigation. Book lives in the header button, not the link row. */
@@ -90,9 +87,13 @@ export const legalNav = [
   { label: "Terms & Conditions", href: "/terms/" },
 ] as const;
 
-/* Every Book button links here; ?service= preselects the calendar. */
+/*
+  Every Book button opens Vagaro in a new tab. A service's Book button goes
+  to Vagaro's services list, where that service has its own Book Now; the
+  general buttons go straight to the booking page.
+*/
 export function bookHref(slug?: string): string {
-  return slug ? `/book/?service=${slug}` : "/book/";
+  return slug ? site.vagaro.services : site.vagaro.bookNow;
 }
 
 export const siteUrl =
