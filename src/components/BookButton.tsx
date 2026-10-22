@@ -1,9 +1,9 @@
 import { bookHref } from "@/lib/site";
 
 /*
-  A "Book" link. Booking lives on Vagaro, so this opens Vagaro in a new tab:
-  with `slug`, the services list (each service has its own Book Now there);
-  without, the booking page. A plain anchor so it works before hydration.
+  A "Book" link. Booking lives on Vagaro, so this opens Vagaro's services
+  page in a new tab (each service has its own Book Now there). A plain anchor
+  so it works before hydration.
 */
 export function BookButton({
   slug,

@@ -62,13 +62,13 @@ export const site = {
     GoHighLevel Services booking page is no longer used). Vagaro requires the
     client to sign in to a Vagaro account, and its login cookies are blocked
     inside a cross-site iframe on Safari/iOS, so the site links out to Vagaro
-    in a new tab rather than embedding it. Vagaro has no per-service deep
-    links: the services page lists every service with its own Book Now.
+    in a new tab rather than embedding it. Every Book link goes to the
+    services page (Luke's instruction): it lists every service with its own
+    Book Now. Vagaro has no per-service deep links.
   */
   vagaro: {
     profile: "https://www.vagaro.com/steviecainhaircare",
-    bookNow: "https://www.vagaro.com/steviecainhaircare/book-now",
-    services: "https://www.vagaro.com/steviecainhaircare/services",
+    booking: "https://www.vagaro.com/steviecainhaircare/services",
   },
 } as const;
 
@@ -88,12 +88,11 @@ export const legalNav = [
 ] as const;
 
 /*
-  Every Book button opens Vagaro in a new tab. A service's Book button goes
-  to Vagaro's services list, where that service has its own Book Now; the
-  general buttons go straight to the booking page.
+  Every Book button opens Vagaro's services page in a new tab. The slug is
+  accepted for call-site compatibility; Vagaro cannot preselect a service.
 */
-export function bookHref(slug?: string): string {
-  return slug ? site.vagaro.services : site.vagaro.bookNow;
+export function bookHref(_slug?: string): string {
+  return site.vagaro.booking;
 }
 
 export const siteUrl =

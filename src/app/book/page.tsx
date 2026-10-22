@@ -34,7 +34,7 @@ export default function BookPage() {
               account; after that you can book, reschedule or cancel in a couple of taps.
             </p>
             <a
-              href={site.vagaro.bookNow}
+              href={site.vagaro.booking}
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-primary focus-ring mt-6 inline-flex items-center gap-2"
