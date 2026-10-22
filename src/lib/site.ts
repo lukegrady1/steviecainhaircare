@@ -58,10 +58,11 @@ export const site = {
   },
   rating: { value: "5.0", count: 9 },
   /*
-    White-labelled GoHighLevel domain shared across Grady Digital client sites.
-    Widgets and form_embed.js are served from here.
+    GoHighLevel branded domain for this sub-account (Business Profile > Branded
+    Domain, CNAME to brand.ludicrous.cloud). Booking page, reschedule/cancel
+    links and form_embed.js are served from here; no agency domain is exposed.
   */
-  ghlHost: "https://api.gradydigital.com",
+  ghlHost: "https://book.steviecainhaircare.com",
   /*
     GoHighLevel *Services* booking page (Calendars > Services > Booking pages >
     Main booking page). One page lists every service by category; the visitor
@@ -71,7 +72,7 @@ export const site = {
     page scrolls instead of the frame; showHeader=false drops GHL's title bar.
   */
   bookingPage:
-    "https://api.gradydigital.com/booking/stevie-cain-hair-care-tnqwvqykyt?heightMode=full&showHeader=false",
+    "https://book.steviecainhaircare.com/booking/stevie-cain-hair-care-tnqwvqykyt?heightMode=full&showHeader=false",
 } as const;
 
 /* Site navigation. Book lives in the header button, not the link row. */
